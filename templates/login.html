@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="banner">Recipe Finder</div>
+  <div class="card">
+    <h2>Login</h2>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    <form method="post" action="/login">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="demo" required>
+      <label>Password</label>
+      <input type="password" name="password" placeholder="demo123" required>
+      <button type="submit">Login</button>
+    </form>
+    <p class="hint">Demo credentials: demo / demo123</p>
+  </div>
+</body>
+</html>

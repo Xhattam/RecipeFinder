@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <title>Recipe Search</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="banner">Recipe Finder</div>
+  <div class="topbar">
+    <span>Logged in as {{ user }}</span>
+    <a href="/logout">Logout</a>
+  </div>
+  <div class="card">
+    <h2>Find a recipe</h2>
+    <form method="post" action="/search">
+      <input type="text" name="query" value="{{ query }}" placeholder="Type ingredients or what you want to make" required>
+      <button type="submit">Search</button>
+    </form>
+    {% if message %}<p class="hint">{{ message }}</p>{% endif %}
+    {% if results %}
+      <div class="results">
+      {% for r in results %}
+        <div class="result">
+          <h3>{{ loop.index }}. {{ r.title }}</h3>
+          <p class="score">Similarity: {{ "%.3f"|format(r.score) }}</p>
+          <p>{{ r.contents }}</p>
+        </div>
+      {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
